@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "174397920097",
+    "project_id": "lobrand-flutter",
+    "storage_bucket": "lobrand-flutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:174397920097:android:f96925e983ebf14ca4ab20",
+        "android_client_info": {
+          "package_name": "com.example.lobrand_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "174397920097-nbe5ketkfr5b9eep7o9rl915t0tuj6mi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzoPjq0OE7eFx5cX0aBhKvXQaQQcbyLKo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "174397920097-nbe5ketkfr5b9eep7o9rl915t0tuj6mi.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "174397920097-k5g816qqfhsn15bguj1m5nafqh59eq17.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.lobrandFlutter"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
