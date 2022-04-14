@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:lobrand_flutter/resources/auth_methods.dart';
 import 'package:lobrand_flutter/resources/firestore_methods.dart';
+import 'package:lobrand_flutter/screens/login_screen.dart';
 import 'package:lobrand_flutter/utils/color.dart';
 import 'package:lobrand_flutter/utils/utils.dart';
 import 'package:lobrand_flutter/widgets/follow_button.dart';
@@ -112,7 +114,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 mobileBackgroundColor,
                                             textColor: primaryColor,
                                             boderColor: Colors.grey,
-                                            function: () {},
+                                            function: () async {
+                                              await AuthMethods().signOut();
+                                              Navigator.of(context)
+                                                  .pushReplacement(
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      LoginScreen(),
+                                                ),
+                                              );
+                                            },
                                           )
                                         : isFollowing
                                             ? FollowButton(
@@ -121,7 +132,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 textColor: Colors.black,
                                                 boderColor: Colors.grey,
                                                 function: () async {
-                                                  await FirestoreMethods().followUser(FirebaseAuth.instance.currentUser!.uid, userData['uid']);
+                                                  await FirestoreMethods()
+                                                      .followUser(
+                                                          FirebaseAuth.instance
+                                                              .currentUser!.uid,
+                                                          userData['uid']);
                                                   setState(() {
                                                     isFollowing = false;
                                                     followers--;
@@ -134,7 +149,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 textColor: Colors.white,
                                                 boderColor: Colors.blue,
                                                 function: () async {
-                                                  await FirestoreMethods().followUser(FirebaseAuth.instance.currentUser!.uid, userData['uid']);
+                                                  await FirestoreMethods()
+                                                      .followUser(
+                                                          FirebaseAuth.instance
+                                                              .currentUser!.uid,
+                                                          userData['uid']);
 
                                                   setState(() {
                                                     isFollowing = true;
@@ -200,8 +219,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                         return Container(
                           child: Image(
-                            image: NetworkImage(
-                                snap['postUrl']),
+                            image: NetworkImage(snap['postUrl']),
                             fit: BoxFit.cover,
                           ),
                         );
